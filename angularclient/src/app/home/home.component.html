@@ -1,0 +1,80 @@
+<div class="list row">
+  <div class="col-md-12" style="margin-top:20px">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="type to search by recipe name"
+        [(ngModel)]="name"/>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchName()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Recipes</h4>
+
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="
+          let recipe of recipes | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+        [class.active]="i == currentIndex"
+        (click)="setActiveRecipe(recipe, i)">
+        {{ recipe.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6" style="margin-top: 35px">
+    <div *ngIf="currentRecipe.id">
+      <div>
+        <label><strong>Name:</strong></label> {{ currentRecipe.name}}
+      </div>
+      <div>
+        <label><strong>Time needed:</strong></label>
+        {{ currentRecipe.time}}
+      </div>
+
+      <a
+        class="badge badge-warning"
+        href="recipe-card/{{ currentRecipe.id }}">
+        Go to
+      </a>
+    </div>
+
+    <div *ngIf="!currentRecipe">
+      <br />
+      <p>Please click on a Recipe...</p>
+    </div>
+  </div>
+
+  <div class="mt-3" style="margin-left:15px">
+    Items per Page:
+    <select (change)="handlePageSizeChange($event)">
+      <option *ngFor="let size of pageSizes" [ngValue]="size">
+        {{ size }}
+      </option>
+    </select>
+  </div>
+</div>

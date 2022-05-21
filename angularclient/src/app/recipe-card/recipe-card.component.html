@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/sockjs.min.js"></script>
+  <script src="assets/stomp.min.js"></script>
+<title></title>
+</head>
+<body>
+<div class="wrap" >
+</div>
+
+    <h2 style = "margin-top:10px" >
+        <div>{{recipeName}}</div>
+    </h2>
+
+<mat-card class="slide-in-blurred-right" tabindex="0">
+    <div style="display:flex;">
+    <div class="recipe-card slide-in-blurred-right" >
+        <img mat-card-xl-image src="{{ recipeImg }}" class="user-img "/>
+        <mat-card-content style="margin-top: 20px">Cook time: {{ recipeCookTime }} min.</mat-card-content>
+        <mat-card-content style="width:400px">Description: {{ recipeDescr }}</mat-card-content>
+<!--        <mat-card-content style="width:400px"> <mat-list style="display: inline-flex" *ngFor="let la of recipeLables.data">{{la.attributes.label}} </mat-list></mat-card-content>-->
+<!--        <mat-card-content style="width:400px"> {{ PrintRating() }}</mat-card-content>-->
+<!--        <a mat-card-content mat-list-item style="width:400px;color:Black" id="recipe_review" href="http://localhost:4200/recipe_review/{{ recipeId }}"><button mat-stroked-button>Rate</button></a>-->
+    </div>
+<!--      <input class="form-control" type="text" placeholder="message" [(ngModel)]="input">-->
+<!--      <button class="btn btn-success" (click)="sendMessage()">Send</button>-->
+<!--      <div class="content">-->
+<!--        <div *ngFor="let msg of wsService.msg">-->
+<!--          {{msg}}-->
+<!--        </div>-->
+<!--      </div>-->
+
+    <div class="card my-5" style="margin-left: 100px">
+      <div class="card-body slide-in-blurred-right w3-container" style="display: flex">
+        <table class="w3-table w3-bordered mat-table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="mat-option" style="font-size: 17px">Ingredients</th>
+                <th scope="col" class="mat-option" style="font-size: 17px">#</th>
+            </tr>
+            </thead>
+            <tbody style="position: relative;margin-left:20px">
+<!--            <tr *ngFor="let ingr of relatedIngredients.data" style="">-->
+<!--                <td><a class="mat-option" href="http://localhost:4200/ingredient-card/{{ingr.id}}">{{ ingr.attributes.name }}</a></td>-->
+<!--                <td class="mat-option">{{ ingr.id }}</td>-->
+<!--            </tr>-->
+            </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  <!--src\app\app.component.html-->
+</mat-card>
+</body>
+</html>
