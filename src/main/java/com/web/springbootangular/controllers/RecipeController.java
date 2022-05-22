@@ -60,8 +60,12 @@ public class RecipeController {
             else
                 pageRecipes = recipeRepository.findByNameContainingIgnoreCase(name, paging);
             recipes = pageRecipes.getContent();
+            List<RecipeDTO> recipeDTOs = new ArrayList<RecipeDTO>();
+            for (Recipe i: recipes) {
+                recipeDTOs.add(new RecipeDTO(i));
+            }
             Map<String, Object> response = new HashMap<>();
-            response.put("recipes", recipes);
+            response.put("recipes", recipeDTOs);
             response.put("currentPage", pageRecipes.getNumber());
             response.put("totalItems", pageRecipes.getTotalElements());
             response.put("totalPages", pageRecipes.getTotalPages());
