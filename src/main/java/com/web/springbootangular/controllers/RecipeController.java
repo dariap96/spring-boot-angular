@@ -1,8 +1,11 @@
 package com.web.springbootangular.controllers;
 
 import com.web.springbootangular.DTOs.RecipeDTO;
+import com.web.springbootangular.models.Ingredient;
+import com.web.springbootangular.models.IngredientsToRecipes;
 import com.web.springbootangular.models.Recipe;
 import com.web.springbootangular.repository.RecipeRepository;
+import com.web.springbootangular.services.impl.IngredientsService;
 import com.web.springbootangular.services.impl.RecipesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,7 @@ import java.util.*;
 @RequestMapping("api")
 public class RecipeController {
     private final RecipesService recipesService;
+    private final IngredientsService ingredientsService;
     @Autowired
     RecipeRepository recipeRepository;
 
@@ -35,12 +39,12 @@ public class RecipeController {
 //    }
 
     @GetMapping(value = "/recipe/{id}")
-    public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") Long id) {
+    public ResponseEntity<RecipeDTO> getRecipeById(@PathVariable("id") Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Recipe recipe = this.recipesService.getRecipeById(id);
-        return new ResponseEntity<>(recipe, HttpStatus.OK);
+        RecipeDTO recipe = new RecipeDTO(this.recipesService.getRecipeById(id));
+        return new ResponseEntity<RecipeDTO>(recipe, HttpStatus.OK);
     }
 
     @GetMapping("/recipe")
@@ -66,5 +70,6 @@ public class RecipeController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
 }

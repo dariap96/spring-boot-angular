@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { RecipeService } from "../_services/recipe.service";
 import { Recipe } from "../models/Recipe";
-import { Ingredients } from "../models/Ingredients";
 //import { UserInfo } from "../models/User";
 //import { Selections } from "../model/Selections";
 import { ThemePalette } from "@angular/material/core";
@@ -21,7 +20,7 @@ export class RecipeCardComponent implements OnInit {
   recipeId: number;
   selectedRecipe!: Recipe;
   //selectedSelection = null;
-  //relatedIngredients!: Ingredients;
+  relatedIngredients!: string[];
   //rating : string;
   //reviews : RecipeRatingInfo[];
   recipeName: string;
@@ -36,7 +35,9 @@ export class RecipeCardComponent implements OnInit {
   content = '';
   received = [];
   sent = [];
-
+  cuisine: string;
+  meal: string;
+  dish: string;
   constructor(private route: ActivatedRoute, private service: RecipeService) {
     this.recipeId = route.snapshot.params['id'];
   }
@@ -48,6 +49,10 @@ export class RecipeCardComponent implements OnInit {
       this.recipeCookTime = this.selectedRecipe.time;
       this.recipeImg = this.selectedRecipe.image;
       this.recipeDescr = this.selectedRecipe.actionsSequence;
+      this.relatedIngredients = this.selectedRecipe.ingredients;
+      this.cuisine = this.selectedRecipe.cuisine;
+      this.meal = this.selectedRecipe.meal;
+      this.dish = this.selectedRecipe.dish;
     });
 
 

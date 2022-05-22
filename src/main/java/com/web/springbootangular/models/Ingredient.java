@@ -1,5 +1,8 @@
 package com.web.springbootangular.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,8 +44,8 @@ public class Ingredient implements Serializable {
     @Column
     private String originalId;
 
-//    @OneToMany(mappedBy = "ingredient")
-//    private Set<IngredientsToRecipes> ingredientsSet;
+    @OneToMany(mappedBy = "ingredient")
+    private Set<IngredientsToRecipes> ingredientsSet;
 
 //    @ManyToMany(mappedBy = "ingredientSet")
 //    private Set<Selection> selectionSet;

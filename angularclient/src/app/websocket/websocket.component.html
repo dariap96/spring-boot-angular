@@ -1,57 +1,38 @@
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-  enabled. Please enable
-  Javascript and reload this page!</h2></noscript>
-<script type="text/javascript">
-  window.global = window;
-</script>
 <div id="main-content" class="container">
-
-  <div class="row">
-    <div class="col-md-12">
-      {{ greeting }}
-    </div>
-  </div>
-
   <div class="row">
     <div class="col-md-6">
       <form class="form-inline">
         <div class="form-group">
-          <label>WebSocket connection:</label>
-          <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
-          <button (click)="disconnect()" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+          <label for="connect">WebSocket connection:</label>
+          <button id="connect" class="btn btn-default" type="button" [disabled]="disabled" (click)="connect()">Connect</button>
+          <button id="disconnect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="disconnect()">Disconnect
           </button>
         </div>
       </form>
     </div>
     <div class="col-md-6">
-      <form class="form-inline">
+      <form class="form-inline" name="test-form">
         <div class="form-group">
-          <label>What is your name?</label>
-          <input type="text" [(ngModel)]="name" class="form-control" name="name"> <br>
+          <label for="name">What is your name?</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Your name here..." [(ngModel)]="name">
         </div>
-        <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
+        <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
       </form>
     </div>
-
-    <p> {{ greeting }}</p>
   </div>
-
-  <br>
-  <div>
-    <h1>Sent Messages</h1>
-    <br>
-    <ul>
-      <li *ngFor="let item of sent">Source: {{item.source}} -> Content {{item.content}}</li>
-    </ul>
-  </div>
-
-  <br>
-  <div>
-    <h1>Received Messages</h1>
-    <br>
-    <ul>
-      <li *ngFor="let item of received">Source: {{item.source}} -> Content {{item.content}}</li>
-    </ul>
+  <div class="row">
+    <div class="col-md-12" *ngIf="showConversation">
+      <table id="conversation" class="table table-striped">
+        <thead>
+        <tr>
+          <th>Greetings</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let greeting of greetings" >
+        <tr><td>{{greeting}}</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

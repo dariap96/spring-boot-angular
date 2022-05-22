@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable} from "rxjs";
 import {Recipe} from "../models/Recipe";
 import {Ingredient} from "../models/Ingredient";
-import {Ingredients} from "../models/Ingredients";
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +22,5 @@ export class RecipeService {
   getRecipeById(id: number): Observable<Recipe> {
     return this.http.get<Recipe>(this.RECIPE_URL + id);
   }
-
-  // getIngredientsByRecipeId(id: number) : Observable<Ingredients> {
-  //   return this.http.get<Ingredients>(this.RECIPE_URL + '/api/ingredient?filter[ingredientsSet.recipe.id]=' + id);
-  // }
-  // в ингредиент контроллер
-
 
 }

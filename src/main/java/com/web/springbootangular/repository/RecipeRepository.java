@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.Map;
+
 @Component
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 //        Recipe getByOriginalId(String s);

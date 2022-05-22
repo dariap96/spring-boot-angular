@@ -44,4 +44,8 @@ public class IngredientsService implements IService<Ingredient> {
     public boolean existsById(Long id) {
         return (ingredientsRepository.existsById(id));
     }
+
+    public Ingredient getIngredientByName(String name) {
+        return this.ingredientsRepository.getByName(name);
+    }
 }
