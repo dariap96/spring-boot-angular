@@ -1,10 +1,6 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
+
+  <mat-card class="mat-elevation-z4">
+    <h1 mat-card-title class="text-focus-in" >Welcome to GoodMeal</h1>
     <form
       *ngIf="!isLoggedIn"
       name="form"
@@ -12,48 +8,51 @@
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
-        <label>Username</label>
-        <input
+      <mat-form-field appearance="outline" style="margin-top: 10px">
+        <mat-label>Username</mat-label>
+        <input matInput
           type="text"
-          class="form-control"
           name="username"
           [(ngModel)]="form.username"
           required
           #username="ngModel"
         />
-        <div
+        <mat-error style="margin-top:140px;width: 200px"
           class="alert alert-danger"
           role="alert"
           *ngIf="username.errors && f.submitted"
         >
           Username is required!
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input
-          type="password"
-          class="form-control"
+        </mat-error>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="margin-top: 5px">
+        <mat-label>Password</mat-label>
+        <input matInput
+          [type]="hide ? 'password' : 'text'"
           name="password"
           [(ngModel)]="form.password"
           required
           minlength="4"
           #password="ngModel"
         />
-        <div
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error
           class="alert alert-danger"
-          role="alert"
+          role="alert" style="margin-top:100px;width: 200px;margin-left:5px"
           *ngIf="password.errors && f.submitted"
         >
           <div *ngIf="password.errors['required']">Password is required</div>
           <div *ngIf="password.errors['minlength']">
             Password must be at least 4 characters
           </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
+        </mat-error>
+      </mat-form-field>
+      <div >
+        <button mat-stroked-button>
           Login
         </button>
       </div>
@@ -71,5 +70,4 @@
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ roles }}.
     </div>
-  </div>
-</div>
+  </mat-card>

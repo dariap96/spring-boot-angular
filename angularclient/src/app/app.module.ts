@@ -27,6 +27,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -42,24 +43,25 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     RecipeCardComponent,
     WebsocketComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatPaginatorModule,
-    NgxPaginationModule,
-    MatTabsModule,
-    MatCardModule,
-    NgSelectModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatSelectModule,
-    MatFormFieldModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatPaginatorModule,
+        NgxPaginationModule,
+        MatTabsModule,
+        MatCardModule,
+        NgSelectModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatProgressSpinnerModule
+    ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,6 @@
   <div style="width: 50%;float: left">
 
     <h1 style="margin-top: 40px">Recipes</h1>
-
   <div style="margin-left: -50px;margin-top: 10px">
     <pagination-controls
       previousLabel="Prev"
@@ -12,6 +11,7 @@
       (pageChange)="handlePageChange($event)"
     ></pagination-controls>
   </div>
+    <mat-spinner *ngIf="loading" style="position: center"></mat-spinner>
 
   <div>
 

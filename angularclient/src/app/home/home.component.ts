@@ -21,11 +21,14 @@ export class HomeComponent implements OnInit {
   count = 0;
   pageSize = 10;
   pageSizes = [10, 5, 20];
+  loading:boolean;
 
   constructor(private userService: UserService, private recipeService: RecipeService) { }
 
   ngOnInit(): void {
+    this.loading=true;
     this.retrieveRecipes();
+    this.loading = false;
   }
 
   getRequestParams(searchName: string,page: number, pageSize: number): any {

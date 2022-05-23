@@ -30,3 +30,19 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+.mat-card {
+  text-align: center;
+  vertical-align: middle;
+  margin:auto;
+  margin-top:140px;
+  width:50%;
+  position:center;
+  border-radius:20px;
+  padding:80px;
+  box-shadow: #d4d4d4
+}
+.mat-stroked-button {
+  text-align: center;
+  position: center;
+  margin-top: 0;
+}
