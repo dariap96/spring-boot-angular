@@ -1,9 +1,9 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
+
+    <h3 style="margin-top:120px">
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
-  </header>
+
   <p>
     <strong>Token:</strong>
     {{ currentUser.accessToken.substring(0, 20) }} ...
