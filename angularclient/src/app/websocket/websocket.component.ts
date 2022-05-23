@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
 @Component({
-  selector: 'app-root',
+  selector: 'websocket',
   templateUrl: './websocket.component.html',
   styleUrls: ['./websocket.component.css']
 })
-export class WebsocketComponent {
+export class WebsocketComponent implements OnInit{
   title = 'app';
 
   greetings: string[] = [];
@@ -17,6 +17,11 @@ export class WebsocketComponent {
   disabled: boolean;
 
   constructor(){}
+
+  ngOnInit(): void {
+       this.connect();
+
+    }
 
   connect() {
     //connect to stomp where stomp endpoint is exposed

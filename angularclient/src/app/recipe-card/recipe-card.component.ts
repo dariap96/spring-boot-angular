@@ -5,6 +5,7 @@ import { Recipe } from "../models/Recipe";
 //import { UserInfo } from "../models/User";
 //import { Selections } from "../model/Selections";
 import { ThemePalette } from "@angular/material/core";
+import {TokenStorageService} from "../_services/token-storage.service";
 //import { RecipeRatingInfo } from "../model/RecipesRatingsInfo";
 //import { Labels } from "../model/Labels";
 
@@ -38,11 +39,13 @@ export class RecipeCardComponent implements OnInit {
   cuisine: string;
   meal: string;
   dish: string;
-  constructor(private route: ActivatedRoute, private service: RecipeService) {
+  isLoggedIn = false;
+  constructor(private route: ActivatedRoute, private service: RecipeService,private tokenStorageService: TokenStorageService,)  {
     this.recipeId = route.snapshot.params['id'];
   }
 
   ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.service.getRecipeById(this.recipeId).subscribe(data => {
       this.selectedRecipe = data;
       this.recipeName = this.selectedRecipe.name;

@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 public class RecipeDTO {
+    private Long id;
     private String name;
     private Integer time;
     private String image;
@@ -22,7 +23,7 @@ public class RecipeDTO {
     private String dish;
 
     public RecipeDTO(String name, Integer time, String image, String actionsSequence, String originalId, Set<String> ingredients,
-                     String meal, String dish) {
+                     String meal, String dish, Long id) {
         this.name = name;
         this.time = time;
         this.image = image;
@@ -32,6 +33,7 @@ public class RecipeDTO {
         this.cuisine = cuisine;
         this.meal = meal;
         this.dish = dish;
+        this.id = id;
     }
     public RecipeDTO(Recipe recipe) {
         this.name = recipe.getName();
@@ -45,6 +47,7 @@ public class RecipeDTO {
         this.cuisine = recipe.getCuisine().getType();
         this.meal = recipe.getMeal().getType();
         this.dish = recipe.getDish().getType();
+        this.id = recipe.getId();
 
     }
 }

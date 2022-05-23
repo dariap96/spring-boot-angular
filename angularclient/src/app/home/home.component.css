@@ -1,5 +1,26 @@
+a:hover{
+  color:#673ab7;
+}
 .list {
   text-align: left;
   max-width: 750px;
   margin: auto;
+}
+li.list-group-item.ng-star-inserted.active{
+  background-color:#eff0f3;
+  color: #eff0f3;
+  border-color:#eff0f3 ;
+}
+
+.pagination{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.current {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

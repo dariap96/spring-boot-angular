@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body >
 
-<mat-card class="slide-in-blurred-right" tabindex="0" style="align-items: center;margin-top:80px">
-  <mat-card-title>{{recipeName}}</mat-card-title>
+<mat-card tabindex="0" style="align-items: center;margin-top:60px;padding:25px">
+  <h2>{{recipeName}}</h2>
     <mat-card-content style="display:flex;margin-top: 10px">
     <div class="recipe-card slide-in-blurred-right" >
-        <img mat-card-xl-image src="{{ recipeImg }}" class="user-img "/>
         <mat-card-content style="margin-top: 20px">Cook time: {{ recipeCookTime }} min.</mat-card-content>
         <mat-card-content style="width:400px">Description: {{ recipeDescr }}</mat-card-content>
       <mat-card-content style="width:400px">Cuisine: {{ cuisine }}</mat-card-content>
@@ -24,13 +23,12 @@
 <!--        </div>-->
 <!--      </div>-->
 
-    <div class="card my-5" style="margin-left: 100px">
+    <div  style="margin-left: 40px;margin-top: -68px">
       <div class="card-body slide-in-blurred-right w3-container" style="display: flex">
         <table class="w3-table w3-bordered mat-table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" class="mat-option" style="font-size: 17px">Ingredients</th>
-                <th scope="col" class="mat-option" style="font-size: 17px">#</th>
+                <h1 scope="col" class="mat-option" style="font-size: 17px">Ingredients:</h1>
             </tr>
             </thead>
             <tbody style="position: relative;margin-left:20px">
@@ -41,9 +39,12 @@
             </tr>
             </tbody>
         </table>
+        <img  style="margin-left:80px" mat-card-xl-image src="https://http.cat/404" class="user-img "/>
       </div>
     </div>
     </mat-card-content>
+
+  <websocket *ngIf="isLoggedIn"></websocket>
   <!--src\app\app.component.html-->
 </mat-card>
 </body>

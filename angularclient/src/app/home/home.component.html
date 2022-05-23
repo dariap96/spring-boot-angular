@@ -1,24 +1,10 @@
-<body style="margin:0">
-<div class="list row">
-  <div class="col-md-12" style="margin-top:80px;transform:scale(1.1);">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="type to search by recipe name"
-        [(ngModel)]="name"/>
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="searchName()">
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
+<body style="margin:0;width: 100%;height: 100%">
+<div>
+  <div style="width: 50%;float: left">
 
-  <div class="col-md-12" style="margin-left: 120px">
+    <h1 style="margin-top: 40px">Recipes</h1>
+
+  <div style="margin-left: -50px;margin-top: 10px">
     <pagination-controls
       previousLabel="Prev"
       nextLabel="Next"
@@ -27,10 +13,9 @@
     ></pagination-controls>
   </div>
 
-  <div class="col-md-6">
-    <h2>Recipes</h2>
+  <div>
 
-    <ul class="list-group" >
+    <ul class="list-group"  style="margin-top: 15px">
       <li
         class="list-group-item"
         *ngFor="
@@ -43,18 +28,48 @@
         "
         [class.active]="i == currentIndex"
         (click)="setActiveRecipe(recipe, i)">
+        <a style="color:black" href ="http://localhost:4200/recipe-card/{{recipe.id}}">
         {{ recipe.name}}
+        </a>
       </li>
     </ul>
   </div>
-  <div class="col-md-6" style="margin-top: 35px">
-    <div *ngIf="currentRecipe.id">
+
+  <div style="margin-top:20px">
+    Items per Page:
+    <select (change)="handlePageSizeChange($event)">
+      <option *ngFor="let size of pageSizes" [ngValue]="size">
+        {{ size }}
+      </option>
+    </select>
+  </div>
+</div>
+
+
+  <div style="width:50%;float: left;">
+
+    <div style="margin-top:25px;display:flex;flex-direction: row;align-self: center;margin-left:120px">
+      <mat-form-field style="width: 300px">
+        <input  matInput
+                type="text"
+                placeholder="type to search by recipe name.."
+                [(ngModel)]="name"/>
+      </mat-form-field>
+      <button mat-button style = "width:60px;padding:0;height: 50px;margin-top: 3px"
+              (click)="searchName()">
+        Search
+      </button>
+    </div>
+    <div *ngIf="currentRecipe.id" style="margin-left: 120px;
+             margin-top: 80px;">
+      <h1>Recipe Preview</h1>
       <div>
         <label><strong>Name:</strong></label> {{ currentRecipe.name}}
       </div>
       <div>
         <label><strong>Time needed:</strong></label>
         {{ currentRecipe.time}}
+        <label>min</label>
       </div>
 
       <a
@@ -68,15 +83,8 @@
       <br />
       <p>Please click on a Recipe...</p>
     </div>
+
   </div>
 
-  <div class="mt-3" style="margin-left:15px">
-    Items per Page:
-    <select (change)="handlePageSizeChange($event)">
-      <option *ngFor="let size of pageSizes" [ngValue]="size">
-        {{ size }}
-      </option>
-    </select>
-  </div>
 </div>
 </body>

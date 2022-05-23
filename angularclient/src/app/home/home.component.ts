@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
   name = '';
   page = 2;
   count = 0;
-  pageSize = 5;
-  pageSizes = [5, 10, 20];
+  pageSize = 10;
+  pageSizes = [10, 5, 20];
 
   constructor(private userService: UserService, private recipeService: RecipeService) { }
 
@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
   setActiveRecipe(recipe: Recipe, index: number): void {
     this.currentRecipe = recipe;
     this.currentIndex = index;
+    console.log(this.currentIndex);
   }
 
   refreshList(): void {

@@ -22,6 +22,11 @@ import {MatCardModule} from "@angular/material/card";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {WebsocketComponent} from "./websocket/websocket.component";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -37,19 +42,24 @@ import {WebsocketComponent} from "./websocket/websocket.component";
     RecipeCardComponent,
     WebsocketComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatPaginatorModule,
-        NgxPaginationModule,
-        MatTabsModule,
-        MatCardModule,
-        NgSelectModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    MatTabsModule,
+    MatCardModule,
+    NgSelectModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
+  ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
