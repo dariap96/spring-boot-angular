@@ -4,6 +4,8 @@ import { RecipeService } from "../_services/recipe.service";
 import {Recipe} from "../models/Recipe";
 import {PageEvent} from "@angular/material/paginator";
 import {Observable} from "rxjs";
+import {Meal} from "../models/Meal";
+import {MealService} from "../_services/meal.service";
 
 @Component({
   selector: 'app-home',
@@ -22,13 +24,19 @@ export class HomeComponent implements OnInit {
   pageSize = 10;
   pageSizes = [10, 5, 20];
   loading:boolean;
+  mealsList : Meal[] = [];
+  selectedMeal:Meal;
+  mealfiltered: Recipe[];
 
-  constructor(private userService: UserService, private recipeService: RecipeService) { }
+  constructor(private userService: UserService, private recipeService: RecipeService, private mealService: MealService) { }
 
   ngOnInit(): void {
     this.loading=true;
     this.retrieveRecipes();
     this.loading = false;
+    this.mealService.getMeals().subscribe(data => {
+      this.mealsList = data;
+    });
   }
 
   getRequestParams(searchName: string,page: number, pageSize: number): any {
@@ -87,4 +95,15 @@ export class HomeComponent implements OnInit {
     this.page = 1;
     this.retrieveRecipes();
   }
+
+  selectChangeHandlerMeal(e) {
+    this.selectedMeal = e.value;
+    this.recipes.filter(r=> r.meal===e.value);
+    console.log(this.recipes.filter(r=> r.meal===e.value));
+  }
+
+  // clearInput() {
+  //   this.retrieveRecipes()
+  // }
+
 }

@@ -5,34 +5,13 @@
       <div>
         <span>goodmeal</span>
         <a mat-button [routerLink]="'/home'" style ="margin-left:10px">Home </a>
-<!--        <a mat-button *ngIf="showAdminBoard" [routerLink]="'/admin'">Admin Board</a>-->
-<!--        <a mat-button *ngIf="showModeratorBoard" [routerLink]="'/mod'">Moderator Board</a>-->
-<!--        <a mat-button *ngIf="isLoggedIn" [routerLink]="'/user'" style = "margin-left:1100px">User</a>-->
         <a mat-button *ngIf="!isLoggedIn" [routerLink]="'/register'" style = "margin-left:1100px">Sign up</a>
         <a mat-button *ngIf="!isLoggedIn" [routerLink]="'/login/'" >Login</a>
         <a mat-button *ngIf="isLoggedIn" [routerLink]="'/profile'" style = "margin-left:1100px">{{ username }}</a>
-        <a mat-button *ngIf="isLoggedIn" (click)="logout()">LogOut</a>
+        <a mat-button *ngIf="isLoggedIn" (click)="logout()" >LogOut</a>
       </div>
     </mat-toolbar-row>
-<!--    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">-->
-<!--      <li class="nav-item">-->
-<!--        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a href="/login" class="nav-link" routerLink="login">Login</a>-->
-<!--      </li>-->
-<!--    </ul>-->
-
-<!--    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">-->
-<!--      <li class="nav-item">-->
-<!--        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a href class="nav-link" (click)="logout()">LogOut</a>-->
-<!--      </li>-->
-<!--    </ul>-->
   </mat-toolbar>
-
   <div class="container">
     <router-outlet></router-outlet>
   </div>

@@ -50,7 +50,7 @@
 
     <div style="margin-top:25px;display:flex;flex-direction: row;align-self: center;margin-left:120px">
       <mat-form-field style="width: 300px">
-        <input  matInput
+        <input  matInput (keyup.enter)="searchName()"
                 type="text"
                 placeholder="type to search by recipe name.."
                 [(ngModel)]="name"/>
@@ -59,7 +59,18 @@
               (click)="searchName()">
         Search
       </button>
+<!--      <button mat-button style = "width:60px;padding:0;height: 50px;margin-top: 3px"-->
+<!--              (click)="clearInput()">-->
+<!--        Clear-->
+<!--      </button>-->
     </div>
+<!--    <mat-form-field appearance="outline" style="margin-left:220px">-->
+<!--      <mat-label>Select meal</mat-label>-->
+<!--      <mat-select #meal (selectionChange)="selectChangeHandlerMeal($event)" multiple >-->
+<!--        <mat-option value="default" hidden></mat-option>-->
+<!--        <mat-option *ngFor="let meal of mealsList" [value]="meal.type">{{meal.type}}<mat-divider></mat-divider></mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
     <div *ngIf="currentRecipe.id" style="margin-left: 120px;
              margin-top: 80px;">
       <h1>Recipe Preview</h1>

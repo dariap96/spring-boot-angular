@@ -18,11 +18,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "username is mandatory")
 	@Size(max = 20)
 	private String username;
 
-	@NotBlank
+	@NotBlank(message = "email is mandatory")
 	@Size(max = 50)
 	@Email
 	private String email;
